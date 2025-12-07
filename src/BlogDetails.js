@@ -9,18 +9,18 @@ const BlogDetails = () => {
     "https://dummyjson.com/posts/".concat(id)
   );
 
-  const deletePost = ()=>{
-      fetch("https://dummyjson.com/posts/".concat(id), {
-    method: "Delete",
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      if (data.isDeleted) {
-        console.log("Data Deleted Successfully.....");
-        history.push("/");
-      }
-    });
-  }
+  const deletePost = () => {
+    fetch("https://dummyjson.com/posts/".concat(id), {
+      method: "Delete",
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.isDeleted) {
+          console.log("Data Deleted Successfully.....");
+          history.push("/");
+        }
+      });
+  };
 
   return (
     <div className="blog-details">
@@ -34,20 +34,23 @@ const BlogDetails = () => {
           </p>
           <br></br>
           <div>{blogs.body}</div>
+          <br></br>
+          <br></br>
+          <button
+            onClick={deletePost}
+            style={{
+              backgroundColor: "red",
+              color: "white",
+              borderRadius: "8px",
+              padding: "10px",
+              width: "30%",
+              height: "40px",
+            }}
+          >
+            Delete Blog
+          </button>
         </article>
       )}
-      <button onClick={deletePost}
-        style={{
-          backgroundColor: "red",
-          color: "white",
-          borderRadius: "8px",
-          padding: "10px",
-          width: "30%",
-          height: "40px",
-        }}
-      >
-        Delete Blog
-      </button>
     </div>
   );
 };
